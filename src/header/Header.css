@@ -1,0 +1,73 @@
+.header {
+    width: 90%;
+    margin: 0 5% 0 5%;
+    /* overflow: hidden; */
+    /* position: relative; */
+    display: flex;
+    justify-content: space-between;
+}
+
+.shop-logo {
+    height: 5rem;
+    justify-content: left;
+}
+
+.header-right {
+    display: flex;
+    /* float: right; */
+    /* display: inline; */
+    /* margin-top: 1rem; */
+    /* position: absolute; */
+    /* top: 50%;
+    right: 0;
+    transform: translateY(-50%); */
+    justify-content: right;
+    align-items: center;
+}
+
+.page-link {
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.page-link.selected {
+    border-bottom: black 2px solid;
+}
+  
+.header-right div{
+    margin-left: 2rem;
+}
+
+.cart-icon {
+    height: 2rem;
+}
+
+.cart {
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-start;
+}
+
+.cart span {
+    padding-left: 3px;
+}
+
+.hamburger-icon {
+    height: 2rem;
+}
+
+.hamburger-menu {
+    display: none;
+}
+
+@media only screen and (max-width: 732px) {
+    /* for mobile phone: */
+
+    .hamburger-menu {
+        display: block;
+        cursor: pointer;
+    }
+    
+}
+
+

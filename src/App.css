@@ -36,3 +36,32 @@
     transform: rotate(360deg);
   }
 }
+
+
+.shopping-page {
+  display: grid;
+  grid-template-columns: 2fr 8fr;
+  margin: 2% 5% 0 5%;
+}
+
+@media only screen and (max-width: 732px) {
+  /* for mobile phone: */
+
+  .filter-window{
+    display: none;
+    z-index: 10;
+  }
+
+  .filter-window.showFilter {
+    display: block;
+    width: 100%;
+    margin: 0 0 5em 3em;
+  }
+
+  .shopping-page{
+    grid-template-columns: 1fr;
+  }
+  
+}
+
+
