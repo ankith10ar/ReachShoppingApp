@@ -4,7 +4,7 @@ import Header from './header/Header';
 import Filter from './filter/Filter';
 import Products from './products/Products';
 import SearchBar from './search-bar/SearchBar';
-import FilterConfig from './sample-data/FilterConfig';
+import FilterConfig from './models/FilterConfig';
 
 function App() {
 

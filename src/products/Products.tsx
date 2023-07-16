@@ -1,9 +1,9 @@
 import React from 'react';
-import jsonData from '../sample-data/catalogue.json'
-import { Product, ProductData } from '../sample-data/Product';
+import jsonData from '../assets/catalogue.json'
+import { Product, ProductData } from '../models/Product';
 import './Products.css'
 import productImg from '../assets/product.jpg'
-import FilterConfig from '../sample-data/FilterConfig';
+import FilterConfig from '../models/FilterConfig';
 import { rangeFilterTypes } from '../filter/Filter';
 
 function Products(props: { searchBarText: string; filterConfig: FilterConfig[]}) {

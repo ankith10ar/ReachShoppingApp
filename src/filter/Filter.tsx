@@ -1,8 +1,8 @@
 import React from 'react';
-import { Product } from '../sample-data/Product';
+import { Product } from '../models/Product';
 import './Filter.css';
-import jsonData from '../sample-data/catalogue.json'
-import FilterConfig from '../sample-data/FilterConfig';
+import jsonData from '../assets/catalogue.json'
+import FilterConfig from '../models/FilterConfig';
 
 
 const items: Product[] = jsonData as unknown as Product[]; 
