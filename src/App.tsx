@@ -12,7 +12,6 @@ function App() {
   const [filterConfig, setFilterConfig] = useState([] as FilterConfig[]);
   const [filterWindow, setFilterWindow] = useState("");
 
-  console.log("filterWindow", filterWindow);
 
   return (
 

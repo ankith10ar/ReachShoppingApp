@@ -19,41 +19,36 @@ function Products(props: { searchBarText: string; filterConfig: FilterConfig[]})
         .filter((item) => item.searchString.toString().toLowerCase().includes(searchBarText.toLowerCase()));
     }
 
+
     if (filterConfig.length>0) {
         filterConfig.forEach((filterConf) => {
             if (filterConf.value.length>0) {
+                //range filter evaluation
                 if (rangeFilterTypes.indexOf(filterConf.filterType)>-1) {
-                    //range filter 
-                    
-                    let itemsCopy = Object.assign([], items);
-                    items=[];
-                    filterConf.value.forEach((rangeFilterConf) => {
-                        let filterItems = [];
-                        if (rangeFilterConf.indexOf('+')>-1) {
-                            const min = rangeFilterConf.replace("+", "");
-                            filterItems = itemsCopy.filter((item) => {
-                                let itemVal = item[filterConf.filterType];
-                                return +itemVal>=+min;
-                            })
-                        } else {        
-                            const min = rangeFilterConf.slice(0, rangeFilterConf.search("-"));
-                            const max = rangeFilterConf.slice(rangeFilterConf.search("-")+1);
-                            filterItems = itemsCopy.filter((item) => {
-                                let itemVal = item[filterConf.filterType];
-                                return +itemVal>=+min && +itemVal<=+max;
-                            })
-                        }
-                        items=[...items, ...filterItems];
-                    })
+                    items = items.filter( (item) => {
+                        
+                        let values = filterConf.value;
+                        return values.reduce( (prev: boolean, curr: string, index:number, values: string[]) => {
+
+                            if (curr.indexOf('+')>-1) {
+                                const min = curr.replace("+", "");
+                                return prev || (+item[filterConf.filterType]>+min);
+                            } else {
+                                const min = curr.slice(0, curr.search("-"));
+                                const max = curr.slice(curr.search("-")+1);
+                                return prev || (+item[filterConf.filterType]>=+min && +item[filterConf.filterType]<=+max);
+                            }
+
+                        }, false);
+                    });
                     return;
-                } 
+                }   
 
-
+                //normal filter evaluation  
                 items = items.filter((item) => {
                     let itemVal = item[filterConf.filterType];
                     return filterConf.value.indexOf(itemVal.toString().toLowerCase())>-1;
                 });
-                
                 
             }
         });
