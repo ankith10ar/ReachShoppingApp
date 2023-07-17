@@ -5,6 +5,7 @@ import Filter from './filter/Filter';
 import Products from './products/Products';
 import SearchBar from './search-bar/SearchBar';
 import FilterConfig from './models/FilterConfig';
+import useDebounce from './hooks/Debounce';
 
 function App() {
 
@@ -12,6 +13,8 @@ function App() {
   const [filterConfig, setFilterConfig] = useState([] as FilterConfig[]);
   const [filterWindow, setFilterWindow] = useState("");
 
+
+  const searchBarTextDe = useDebounce(searchBarText);
 
   return (
 
@@ -23,7 +26,7 @@ function App() {
         </div>
         <div>
           <SearchBar searchBarText={searchBarText} setSearchBarText={setSearchBarText}></SearchBar>
-          <Products searchBarText={searchBarText} filterConfig={filterConfig}></Products>
+          <Products searchBarText={searchBarTextDe} filterConfig={filterConfig}></Products>
         </div>
       </div>
     </>
